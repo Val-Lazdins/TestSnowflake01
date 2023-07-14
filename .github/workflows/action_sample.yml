@@ -47,5 +47,5 @@ jobs:
                                         LANGUAGE PYTHON
                                         RUNTIME_VERSION = '\''3.8'\''
                                         PACKAGES = ('')
-                                        IMPORTS = ('\''@~/${{ github.ref_name }}/storedproc.py'\'')
-                                        HANDLER = '\''storedproc.run'\'';' -o friendly=false
+                                        IMPORTS = ('\''@~/${{ github.ref_name }}/dimDate.sql'\'')
+                                        HANDLER = '\''dimDate.run'\'';' -o friendly=false
