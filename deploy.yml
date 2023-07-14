@@ -39,8 +39,8 @@ jobs:
           SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.9-linux_x86_64.bash
       - name: Upload artifact to SnowSQL
         run: |
-          ~/bin/snowsql -q 'put file://'$(pwd)'/storedproc.py @~/${{ github.ref_name }} overwrite=true' -o friendly=false
-      - name: Create or update Stored PRocedure
+          ~/bin/snowsql -q 'put file://'$(pwd)'/dimDate.sql @~/${{ github.ref_name }} overwrite=true' -o friendly=false
+      - name: Create or update table dimDate
         run: |
           ~/bin/snowsql -q 'CREATE OR REPLACE PROCEDURE  MYPROC(message STRING)
                                         RETURNS STRING
