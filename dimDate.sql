@@ -1,3 +1,4 @@
+# dimDate.sql 1
 create table "dimDate"(
   "Date"  date
   ,"Year"  int
