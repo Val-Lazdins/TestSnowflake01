@@ -1,0 +1,65 @@
+config-version: 1
+
+# The root folder for the database change scripts
+root-folder: '/path/to/folder'
+
+# The modules folder for jinja macros and templates to be used across multiple scripts.
+modules-folder: null
+
+# The name of the snowflake account (e.g. xy12345.east-us-2.azure)
+snowflake-account: 'hg21602.australia-east.azure'
+
+# The name of the snowflake user
+snowflake-user: 'VALLAZDINS'
+
+# The name of the default role to use. Can be overrideen in the change scripts.
+snowflake-role: 'DEV_BI_DEPLOYMENT_ROLE'
+
+# The name of the default warehouse to use. Can be overridden in the change scripts.
+snowflake-warehouse: 'BI_USER_WH'
+
+# The name of the default database to use. Can be overridden in the change scripts.
+snowflake-database: 'DEV_BI_DB'
+
+# Used to override the default name of the change history table (the default is METADATA.SCHEMACHANGE.CHANGE_HISTORY)
+change-history-table: null
+
+# Define values for the variables to replaced in change scripts
+vars:
+  var1: 'value1'
+  var2: 'value2'
+  secrets:
+    var3: 'value3' # This is considered a secret and will not be displayed in any output
+
+# Create the change history schema and table, if they do not exist (the default is False)
+create-change-history-table: false
+
+# Enable autocommit feature for DML commands (the default is False)
+autocommit: false
+
+# Display verbose debugging details during execution (the default is False)
+verbose: false
+
+# Run schemachange in dry run mode (the default is False)
+dry-run: false
+
+# A string to include in the QUERY_TAG that is attached to every SQL statement executed
+query-tag: 'QUERY_TAG'
+
+# Information for Oauth token requests 
+oauthconfig:
+  # url Where token request are posted to
+  token-provider-url: 'https://login.microsoftonline.com/{{ env_var('AZURE_ORG_GUID', 'default') }}/oauth2/v2.0/token'
+  # name of Json entity returned by request
+  token-response-name: 'access_token'
+  # Headers needed for successful post or other security markings ( multiple labeled items permitted
+  token-request-headers: 
+    Content-Type: "application/x-www-form-urlencoded"
+    User-Agent: "python/schemachange"
+  # Request Payload for Token (it is recommended pass
+  token-request-payload:
+    client_id: '{{ env_var('CLIENT_ID', 'default') }}'
+    username: '{{ env_var('USER_ID', 'default') }}'
+    password: '{{ env_var('USER_PASSWORD', 'default') }}'
+    grant_type: 'password'
+    scope: '{{ env_var('SESSION_SCOPE', 'default') }}'
