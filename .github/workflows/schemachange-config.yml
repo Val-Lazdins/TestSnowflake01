@@ -7,22 +7,22 @@ root-folder: '/path/to/folder'
 modules-folder: null
 
 # The name of the snowflake account (e.g. xy12345.east-us-2.azure)
-snowflake-account: 'hg21602.australia-east.azure'
+snowflake-account: 'lklmxxy-sb31235.privatelink'
 
 # The name of the snowflake user
-snowflake-user: 'VALLAZDINS'
+snowflake-user: 'VAL.LAZDINS@IMDEXLIMITED.COM'
 
 # The name of the default role to use. Can be overrideen in the change scripts.
-snowflake-role: 'DEV_BI_DEPLOYMENT_ROLE'
+snowflake-role: 'BI_DEVELOPER_ROLE'
 
 # The name of the default warehouse to use. Can be overridden in the change scripts.
-snowflake-warehouse: 'BI_USER_WH'
+snowflake-warehouse: 'BI_DEV_WH'
 
 # The name of the default database to use. Can be overridden in the change scripts.
-snowflake-database: 'DEV_BI_DB'
+snowflake-database: 'BI_DEV_ODS'
 
 # Used to override the default name of the change history table (the default is METADATA.SCHEMACHANGE.CHANGE_HISTORY)
-change-history-table: null
+change-history-table: 'BI_DEV_ODS.SCHEMACHANGE.CHANGE_HISTORY'
 
 # Define values for the variables to replaced in change scripts
 vars:
